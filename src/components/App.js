@@ -9,6 +9,7 @@ import Cart from './Cart'
 import AllOrders from './AllOrders'
 import MyOrders from './MyOrders'
 import EditProduct from './EditProduct'
+import OrderProducts from './OrderProducts'
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="product-create" element={<ProductCreateOrUpdate />} />
         <Route path="product/:productId" element={<Product/>} />
         <Route path="product/edit/:productId" element={<EditProduct/>} />
+        <Route path="orders/products/:ordersId" element={<OrderProducts/>} />
         <Route path="cart" element={<Cart/>} />
         <Route path="orders" element={<AllOrders/>} />
         <Route path="myorders" element={<MyOrders/>} />

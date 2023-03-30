@@ -53,7 +53,7 @@ const ProductCreateOrUpdate = () => {
                 setProductDescription("")
                 setProductPrice("")
                 setCategory(document.getElementById('category').value)
-                setAvailable(0)
+                setAvailable(document.getElementById('availability').value)
                 if (res.status === 200) {
                     alert("Product Created")
                 } else {
@@ -70,7 +70,7 @@ const ProductCreateOrUpdate = () => {
         }
 
         const changeAvailable = (event) =>{
-            setAvailable(event.target.value)
+            setAvailable( event.target.value)
         }
 
     return (
@@ -89,9 +89,13 @@ const ProductCreateOrUpdate = () => {
 
                 <label>Enter Product Availability:
                     <div className="row" style={{ width: '190px' }}>
-                        <div >
-                            <input value={available} onChange={changeAvailable} type="number" min="1" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></input>
-                         </div>
+                        <div>
+                            <select name="availability" id="availability" onChange={changeAvailable}>
+                                <option >Select</option>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                            </select>
+                        </div>
                     </div>
                 </label>
 

@@ -53,6 +53,7 @@ function MyOrders() {
                         <th scope="col">Address</th>
                         <th scope="col">Total Cost €</th>
                         <th scope="col">Status</th>
+                        <th scope="col">View More</th>
                     </tr>
 
                 </thead>
@@ -65,6 +66,13 @@ function MyOrders() {
                                 <td>{order.address}</td>
                                 <td>{order.totalCost}</td>
                                 <td>{order.status}</td>
+                                <td >
+                                    <div className="row" >
+                                        <div className="col">
+                                        <a href={`/orders/products/${order.ordersId}`} className="btn btn-dark">View</a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         ))
                     }

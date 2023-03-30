@@ -11,6 +11,7 @@ const Products = () => {
     const [category,setCategory] = useState("")
     const { productId } = useParams();
     const [available,setAvailable] = useState("")
+    const [notAvailable,setNotAvailable] = useState("")
     
     //Check if a user is logged in
     useEffect( () =>{
@@ -43,6 +44,13 @@ const Products = () => {
             setProductPrice(productPrice)
             setCategory(category)
             setAvailable(available)
+            
+            if(available=="Yes"){
+                setNotAvailable("No")    
+            }else{
+                setNotAvailable("Yes")
+            }
+
           })
     }, [])
 
@@ -91,7 +99,7 @@ const Products = () => {
     }
 
     const changeAvailable = (event) =>{
-        setAvailable(event.target.value)
+        setAvailable( event.target.value)
     }
 
     return (
@@ -108,12 +116,15 @@ const Products = () => {
                     </label>
 
                     <label>Enter Product Availability:
-                        <div className="row" style={{ width: '190px' }}>
-                            <div >
-                                <input onChange={changeAvailable} type="number" min="0" defaultValue={available} oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></input>
-                            </div>
+                    <div className="row" style={{ width: '190px' }}>
+                        <div>
+                            <select name="availability" id="availability" onChange={changeAvailable}>
+                                <option value={available}>{available}</option>
+                                <option value={notAvailable}>{notAvailable}</option>
+                            </select>
                         </div>
-                    </label>
+                    </div>
+                </label>
 
                     <label>Enter Product Category:
                     <div className="row" style={{ width: '190px' }}>
