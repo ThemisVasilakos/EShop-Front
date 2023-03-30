@@ -76,8 +76,10 @@ const ProductCreateOrUpdate = () => {
     return (
         <div>
             <Navbar/>
-            <h1>Create Product</h1>
-            <form>
+            
+            <div style={{paddingTop:"10%"}}>
+            <form className='loginForm'>
+            <h2>Create Product</h2>
                 <label>Enter Product Description:
                     <input type="text" value={productDescription} onChange={handleProductDescription}/>
                 </label>
@@ -107,11 +109,12 @@ const ProductCreateOrUpdate = () => {
                             <option value="cables">cables</option>
                             <option value="gaming">gaming</option>
                         </select>       
-                        <button onClick={createProd}>Create Product</button>
+                        <button className='prod' onClick={createProd}>Create Product</button>
                     </div>
                 </div>
                 </label>
             </form>
+            </div>
         </div>
     )
 }

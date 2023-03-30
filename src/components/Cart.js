@@ -81,7 +81,7 @@ const Cart = () => {
             });
               let resJson = await res.json();
               if (res.status === 200) {
-                alert("order submittes")
+                alert("order submitted")
                   navigate('/home');
               } else {
                   alert("Error")
@@ -104,7 +104,7 @@ const Cart = () => {
                         <th scope="col">#</th>
                         <th scope="col">Description</th>
                         <th scope="col">Category</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Price €</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Options</th>
                     </tr>

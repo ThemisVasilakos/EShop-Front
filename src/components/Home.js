@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Products from './Products'
-import Navbar from './Navbar'
 
 const Home = () => {
 
@@ -19,7 +18,6 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar/>
             <Products/>
 
         </div>

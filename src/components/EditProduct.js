@@ -97,44 +97,44 @@ const Products = () => {
     return (
         <div>
             <Navbar/>
-             <h1>Edit Product</h1>
+            <div style={{paddingTop:"10%"}}>
+                <form className='loginForm'>
+                <h2>Edit Product</h2>
+                    <label>Enter Product Description:
+                        <input type="text" value={productDescription} onChange={handleProductDescription}/>
+                    </label>
+                    <label>Enter Product Price:
+                        <input type="text" value={productPrice} onChange={handleProductPrice}/>
+                    </label>
 
-             <form>
-                <label>Enter Product Description:
-                    <input type="text" value={productDescription} onChange={handleProductDescription}/>
-                </label>
-                <label>Enter Product Price:
-                    <input type="text" value={productPrice} onChange={handleProductPrice}/>
-                </label>
+                    <label>Enter Product Availability:
+                        <div className="row" style={{ width: '190px' }}>
+                            <div >
+                                <input onChange={changeAvailable} type="number" min="0" defaultValue={available} oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></input>
+                            </div>
+                        </div>
+                    </label>
 
-                <label>Enter Product Availability:
+                    <label>Enter Product Category:
                     <div className="row" style={{ width: '190px' }}>
                         <div >
-                            <input onChange={changeAvailable} type="number" min="0" defaultValue={available} oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></input>
-                         </div>
+                            <select name="category" id="category" onChange={changeCategory}>
+                                <option >{category}</option>
+                                <option value="smartphones">smartphones</option>
+                                <option value="laptops">laptops</option>
+                                <option value="tablets">tablets</option>
+                                <option value="pc hardware">pc hardware</option>
+                                <option value="monitors">monitors</option>
+                                <option value="peripherals">peripherals</option>
+                                <option value="cables">cables</option>
+                                <option value="gaming">gaming</option>
+                            </select>       
+                            <button className='prod' onClick={editProd}>Edit Product</button>
+                        </div>
                     </div>
-                </label>
-
-                <label>Enter Product Category:
-                <div className="row" style={{ width: '190px' }}>
-                    <div >
-                        <select name="category" id="category" onChange={changeCategory}>
-                            <option >{category}</option>
-                            <option value="smartphones">smartphones</option>
-                            <option value="laptops">laptops</option>
-                            <option value="tablets">tablets</option>
-                            <option value="pc hardware">pc hardware</option>
-                            <option value="monitors">monitors</option>
-                            <option value="peripherals">peripherals</option>
-                            <option value="cables">cables</option>
-                            <option value="gaming">gaming</option>
-                        </select>       
-                        <button onClick={editProd}>Edit Product</button>
-                    </div>
-                </div>
-                </label>
-            </form>
-            
+                    </label>
+                </form>
+            </div>
 
         </div>
     )

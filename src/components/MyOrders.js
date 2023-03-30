@@ -51,7 +51,7 @@ function MyOrders() {
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Total Cost</th>
+                        <th scope="col">Total Cost €</th>
                         <th scope="col">Status</th>
                     </tr>
 

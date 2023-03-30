@@ -36,6 +36,7 @@ const Login = () => {
             setUsername("")
             setPassword("")
             if (res.status === 200) {
+                getRole()
                 navigate('/home');
             } else {
                 alert("Error")
@@ -45,19 +46,40 @@ const Login = () => {
             }
     }
 
+    const getRole = async(e)=>{
+      
+            let str = window.localStorage.getItem('token').replace(/["]/g,' ');
+           
+               fetch(`http://localhost:8080/eshop/role`, {
+                headers: {
+                    "Authorization": 'Bearer'+str
+                },
+                method: "GET"        
+              }).then(response => response.text())
+              .then((response) => {
+                if(response === "ROLE_ADMIN"){
+                    window.localStorage.setItem("role",1)
+                  }
+               })
+           
+    }
+
     return (
         <div>
-            <h1>Login</h1>
-            <form>
-                <label>
-                    <input type="text" value={username} onChange={handleUsername}/>
-                </label>
-                <label>
-                    <input type="password" value={password} onChange={handlePassword}/>
-                </label>
-                <button onClick={handleLogin}>Login</button>
-            </form>
-            <Link to="/">Do not have an account?Sign up here</Link>
+            <div style={{paddingTop:"20%"}}>
+                <form className='loginForm'>
+                <h1>Login</h1>
+                    <label>Enter username:
+                        <input type="text" value={username} onChange={handleUsername}/>
+                    </label>
+                    <label>Enter password:
+                        <input type="password" value={password} onChange={handlePassword}/>
+                    </label>
+                    <button className="login" onClick={handleLogin}>Login</button>
+                
+                <Link to="/">Do not have an account?Sign up here</Link>
+                </form>
+            </div>
         </div>
     )
 }

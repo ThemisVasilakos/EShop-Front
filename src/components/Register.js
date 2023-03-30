@@ -49,17 +49,19 @@ const Register = () => {
     return (
         <div>
             
-            <h1>Register</h1>
-            <form>
-                <label>Enter username:
-                    <input type="text" value={username} onChange={handleUsername}/>
-                </label>
-                <label>Enter password:
-                    <input type="password" value={password} onChange={handlePassword}/>
-                </label>
-                <button onClick={handleRegister}>Register</button>
-            </form>
-            <Link to="/login">Already a user?Sign in here</Link>
+            <div style={{paddingTop:"20%"}}>
+                <form className='loginForm'>
+                    <h1>Register</h1>
+                    <label>Enter username:
+                        <input type="text" value={username} onChange={handleUsername}/>
+                    </label>
+                    <label>Enter password:
+                        <input type="password" value={password} onChange={handlePassword}/>
+                    </label>
+                    <button className="login" onClick={handleRegister}>Register</button>
+                    <Link to="/login">Already a user?Sign in here</Link>
+                </form>
+            </div>
         </div>
     )
 }

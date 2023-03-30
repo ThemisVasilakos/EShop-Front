@@ -10,32 +10,6 @@ function ColorSchemesExample() {
 
     const navigate = useNavigate()
 
-    const [role,setRole] = useState("")
-    const [admin,setAdmin] = useState(0)
-    const [count, setCount] = useState(0);
-
-    useEffect ( () =>{
-      
-      let str = window.localStorage.getItem('token').replace(/["]/g,' ');
-     
-         fetch(`http://localhost:8080/eshop/role`, {
-          headers: {
-              "Authorization": 'Bearer'+str
-          },
-          method: "GET"        
-        }).then(response => response.text())
-        .then((response) => {
-          setRole(response)
-         })
-          console.log(role)
-          
-          if(role === "ROLE_ADMIN"){
-            setAdmin(1)
-          }
-          setCount(count);
-
-        }, [])
-
     useEffect( () =>{
 
         if(!window.localStorage.getItem('token')){
@@ -46,25 +20,37 @@ function ColorSchemesExample() {
 
     const logout = () =>{
         window.localStorage.removeItem('token');
+        window.localStorage.removeItem('role');
         navigate("/login")
     }
 
-    const addProduct = () =>{
-        navigate("/product-create")
-    }
+    const addProduct = (e) => {
+      if(window.localStorage.getItem('role')==1){
+          return <Nav.Link href="/product-create">Add Product</Nav.Link>
+      }
+
+  }
+
+  const allOrders = (e) => {
+      if(window.localStorage.getItem('role')==1){
+          return <Nav.Link href="/orders">All Orders</Nav.Link>
+      }
+
+  }
 
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">E-Shop</Navbar.Brand>
+          
           <Nav className="me-auto">
+          <Navbar.Brand href="#home">E-Shop</Navbar.Brand>
             <Nav.Link href="/home">Products</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
             <Nav.Link href="/myorders">My Orders</Nav.Link>
-            <Nav.Link href="/orders">All Orders</Nav.Link>
-            <Nav.Link href="/product-create">Add Product</Nav.Link>
-            <Button variant="secondary" onClick={logout} className="mr-2">Log Out</Button>
+            {allOrders()}
+            {addProduct()}
+            <Nav.Link onClick={logout} style={{position: "absolute",   right: "35px",   top: "12px"}}>Logout</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

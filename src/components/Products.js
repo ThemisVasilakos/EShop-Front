@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form } from 'react-bootstrap'
+import Navbar from './Navbar'
 
 const Products = () => {
 
@@ -27,10 +28,8 @@ const Products = () => {
         }
           
         },[])
-    
-    const addProducts = () =>{
-        navigate("/product-create")
-    }
+           
+       
 
         useEffect ( () =>{
         let str = window.localStorage.getItem('token').replace(/["]/g,' ');
@@ -83,9 +82,23 @@ const Products = () => {
               }
     }
 
+    const editProduct = (e) => {
+        if(window.localStorage.getItem('role')==1){
+            return <a href={`/product/edit/${e}`} className="btn btn-dark">Edit</a>
+        }
+
+    }
+
+    const delProduct = (e) => {
+        if(window.localStorage.getItem('role')==1){
+            return <a className="btn btn-dark" onClick={() => delProd(e)}>Delete</a>
+        }
+
+    }
+
     return (
         <div>
-            
+            <Navbar/>
              <h1>Products</h1>
 
              <div className="col">
@@ -98,7 +111,7 @@ const Products = () => {
                 </select>
             </div>
 
-            <table class="table table-active table-striped">
+            <table className="table table-active table-striped">
 
                 <thead class = "table-primary">
 
@@ -106,28 +119,29 @@ const Products = () => {
                         <th scope="col">#</th>
                         <th scope="col">Description</th>
                         <th scope="col">Category</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Price €</th>
                         <th scope="col">Available</th>
                         <th scope="col">Options</th>
                     </tr>
 
                 </thead>
 
+
                 <tbody>
                     {
                         products.map(product => (
-                            <tr key={product.productId}>
+                            <tr key={product.productId} >
                                 <th scope="row">{product.productId}</th>
                                 <td>{product.productDescription}</td>
                                 <td>{product.category}</td>
                                 <td>{product.productPrice}</td>
                                 <td>{product.available}</td>
-                                <td>
-                                    <div className="row" style={{ width: '190px' }}>
+                                <td >
+                                    <div className="row" >
                                         <div className="col">
                                         <a href={`/product/${product.productId}`} className="btn btn-dark">View</a>
-                                        <a href={`/product/edit/${product.productId}`} className="btn btn-dark">Edit</a>
-                                        <button class="danger" onClick={() => delProd(product.productId)}>Delete</button>
+                                        {editProduct(product.productId)}
+                                        {delProduct(product.productId)}
                                         </div>
                                     </div>
                                 </td>

@@ -78,14 +78,14 @@ const AllOrders = () => {
                 </select>
             </div>
 
-            <table className="table table-hover">
+            <table className="table table-active table-striped">
 
-                <thead>
+                <thead class = "table-primary">
 
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Total Cost</th>
+                        <th scope="col">Total Cost €</th>
                         <th scope="col">Status</th>
                         <th scope="col">From</th>
                     </tr>
