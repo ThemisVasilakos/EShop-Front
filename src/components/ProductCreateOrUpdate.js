@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import LogoutButton from './LogoutButton'
+import Navbar from './Navbar'
 
 const ProductCreateOrUpdate = () => {
 
     const navigate = useNavigate()
     
-    const [productDescription,] = useState("")
+    const [productDescription,setProductDescription] = useState("")
     const [productPrice,setProductPrice] = useState("")
     const [category,setCategory] = useState("")
-
+    const [available,setAvailable] = useState("")
     
 
     const handleProductDescription = (event) =>{
@@ -18,10 +18,6 @@ const ProductCreateOrUpdate = () => {
 
     const handleProductPrice = (event) =>{
         setProductPrice(event.target.value)
-    }
-
-    const handleCategory = (event) =>{
-        setCategory(event.target.value)
     }
 
     //Check if a user is logged in
@@ -48,14 +44,16 @@ const ProductCreateOrUpdate = () => {
                 body: JSON.stringify({
                     productDescription: productDescription,
                     productPrice: productPrice,
-                    category: category
+                    category: category,
+                    available:available
                 }),
               });
                 let resJson = await res.json();
                 
                 setProductDescription("")
                 setProductPrice("")
-                setCategory("")
+                setCategory(document.getElementById('category').value)
+                setAvailable(0)
                 if (res.status === 200) {
                     alert("Product Created")
                 } else {
@@ -66,11 +64,19 @@ const ProductCreateOrUpdate = () => {
                 }
         }
 
+        const changeCategory = () =>{
+            var UserOption  = document.getElementById('category').value;
+            setCategory(UserOption)
+        }
+
+        const changeAvailable = (event) =>{
+            setAvailable(event.target.value)
+        }
+
     return (
         <div>
-
+            <Navbar/>
             <h1>Create Product</h1>
-            <LogoutButton/>
             <form>
                 <label>Enter Product Description:
                     <input type="text" value={productDescription} onChange={handleProductDescription}/>
@@ -78,10 +84,33 @@ const ProductCreateOrUpdate = () => {
                 <label>Enter Product Price:
                     <input type="text" value={productPrice} onChange={handleProductPrice}/>
                 </label>
-                <label>Enter Product Category:
-                    <input type="text" value={category} onChange={handleCategory}/>
+
+                <label>Enter Product Availability:
+                    <div className="row" style={{ width: '190px' }}>
+                        <div >
+                            <input value={available} onChange={changeAvailable} type="number" min="1" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></input>
+                         </div>
+                    </div>
                 </label>
-                <button onClick={createProd}>Create Product</button>
+
+                <label>Enter Product Category:
+                <div className="row" style={{ width: '190px' }}>
+                    <div >
+                        <select name="category" id="category" onChange={changeCategory}>
+                            <option >Select</option>
+                            <option value="smartphones">smartphones</option>
+                            <option value="laptops">laptops</option>
+                            <option value="tablets">tablets</option>
+                            <option value="pc hardware">pc hardware</option>
+                            <option value="monitors">monitors</option>
+                            <option value="peripherals">peripherals</option>
+                            <option value="cables">cables</option>
+                            <option value="gaming">gaming</option>
+                        </select>       
+                        <button onClick={createProd}>Create Product</button>
+                    </div>
+                </div>
+                </label>
             </form>
         </div>
     )
