@@ -94,7 +94,12 @@ const Cart = () => {
     return (
         <div>
             <Navbar/>
+
+            <br></br>
+
              <h1>My Cart</h1>
+
+            <br></br>
              
             <table table class="table table-active table-striped">
 
@@ -130,14 +135,16 @@ const Cart = () => {
                 </tbody>
 
                 </table>
-                <label>Total Cost: {totalCost} €</label>
 
-                <form>
-                    <label>
-                        <input type="text" value={address} onChange={handleAddress}/>
-                    </label>
-                <button onClick={submitOrder}>Send Order</button>
-            </form>
+                <div class="row">
+                   <form className="mixalios">
+                        <label>Total Cost: {totalCost} €</label> 
+                        <label>Address:
+                            <input type="text" value={address} onChange={handleAddress}/>
+                        </label>
+                    <div><button onClick={submitOrder}>Send Order</button></div>
+                    </form>
+                </div>
 
         </div>
     )

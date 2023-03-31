@@ -100,32 +100,37 @@ const Products = () => {
     return (
         <div>
             <Navbar/>
-             <h1>Products</h1>
 
-             <div className="col">
-                <input value={productDescription} onChange={(e) => setProductDescription(e.target.value)} name="productDescription" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            </div>
-            <div className="col-4">
-                <select defaultValue={sort} onChange={(e) => { setSort(e.target.value) }} className="form-select" aria-label="Default select example">
-                    <option value="ASC">Sort by Price: Ascending</option>
-                    <option value="DESC">Sort by Price: Descending</option>
-                </select>
-            </div>
-            <div className="col-4">
-                <select defaultValue={category} onChange={(e) => { setCategory(e.target.value) }} className="form-select" aria-label="Default select example">
-                            <option value="">Category: All</option>
-                            <option value="smartphones">Category: smartphones</option>
-                            <option value="laptops">Category: laptops</option>
-                            <option value="tablets">Category: tablets</option>
-                            <option value="pc hardware">Category: pc hardware</option>
-                            <option value="monitors">Category: monitors</option>
-                            <option value="peripherals">Category: peripherals</option>
-                            <option value="cables">Category: cables</option>
-                            <option value="gaming">Category: gaming</option>
-                </select>
-            </div>
+            
+            <br></br>
 
+            <div class="row">
+                <h1>Products</h1>
 
+                <div  className="login">
+                    <input value={productDescription} onChange={(e) => setProductDescription(e.target.value)} name="productDescription" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                </div>
+                <div className="filter3">
+                    <select defaultValue={sort} onChange={(e) => { setSort(e.target.value) }} className="form-select" aria-label="Default select example">
+                        <option value="ASC">Sort by Price: Asc</option>
+                        <option value="DESC">Sort by Price: Desc</option>
+                    </select>
+                </div>
+                <div className="filter">
+                    <select defaultValue={category} onChange={(e) => { setCategory(e.target.value) }} className="form-select" aria-label="Default select example">
+                                <option value="">Category: All</option>
+                                <option value="smartphones">Category: smartphones</option>
+                                <option value="laptops">Category: laptops</option>
+                                <option value="tablets">Category: tablets</option>
+                                <option value="pc hardware">Category: pc hardware</option>
+                                <option value="monitors">Category: monitors</option>
+                                <option value="peripherals">Category: peripherals</option>
+                                <option value="cables">Category: cables</option>
+                                <option value="gaming">Category: gaming</option>
+                    </select>
+                </div>
+            </div>
+            <br></br>
             <table className="table table-active table-striped">
 
                 <thead class = "table-primary">
@@ -171,7 +176,7 @@ const Products = () => {
             {
                 totalPages > 0 ? (
                     <div className="row justify-content-between">
-                        <div className='col-3'>
+                        <div className='filter2'>
                             <Form.Select defaultValue={size} onChange={(e) => setSize(e.target.value)}>
                                 <option value={3}>Page size: 3</option>
                                 <option value={10}>Page size: 10</option>

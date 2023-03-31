@@ -145,3 +145,31 @@ li {
   font-weight: bold;
   color:#f5f5f5;
 }
+
+.filter{
+    width: 19%;
+}
+
+.filter2{
+    width: 13%;
+}
+
+.filter3{
+    width: 16%;
+}
+
+.order{
+    width: 16%;
+}
+
+.mixalios{
+    display: flex;
+    align-content:center;
+    justify-content: center;
+    }
+    
+.mixalios div{
+    align-items:center;
+    margin: 10px;
+    width:100%;
+    }

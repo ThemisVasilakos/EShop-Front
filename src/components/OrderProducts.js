@@ -61,7 +61,7 @@ const Products = () => {
 
         const validateOrder = (e) => {
             if(window.localStorage.getItem('role')==1){
-                return <button onClick={() => complete()} className="btn btn-dark">Complete Order</button>
+                return <button onClick={() => complete()} className="filter3">Complete Order</button>
             }
     
         }
@@ -69,8 +69,13 @@ const Products = () => {
     return (
         <div>
             <Navbar/>
-             <h1>Order {ordersId} Products</h1>
-            {validateOrder()}
+
+            <br></br>
+            <div class="row">
+                <h1>Order {ordersId} Products</h1>
+                {validateOrder()}
+            </div>
+            <br></br>
             <table className="table table-active table-striped">
 
                 <thead class = "table-primary">

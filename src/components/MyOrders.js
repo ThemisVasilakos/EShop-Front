@@ -43,14 +43,23 @@ function MyOrders() {
   return (
     <>
       <Navbar/>
-      <h1>My Orders</h1>
-      <div className="col-4">
-                <select defaultValue={status} onChange={(e) => { setStatus(e.target.value) }} className="form-select" aria-label="Default select example">
-                            <option value="">Category: All</option>
-                            <option value="submitted">Category: submitted</option>
-                            <option value="completed">Category: completed</option>
-                </select>
+      
+      <br></br>
+
+        <div class="row">
+            <h1>My Orders</h1>
+            <div className="filter3">
+                    <select defaultValue={status} onChange={(e) => { setStatus(e.target.value) }} className="form-select" aria-label="Default select example">
+                        <option value="">Category: All</option>
+                        <option value="submitted">Category: submitted</option>
+                        <option value="completed">Category: completed</option>
+                    </select>
             </div>
+
+        </div>
+
+        <br></br>
+
       <table class="table table-active table-striped">
 
                 <thead class = "table-primary">

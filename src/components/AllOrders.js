@@ -69,25 +69,32 @@ const AllOrders = () => {
         <div>
             
             <Navbar/>
-             <h1>Orders</h1>
+            
+            <br></br>
 
-             <div className="col">
-                <input value={address} onChange={(e) => setAddress(e.target.value)} name="address" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            </div>
-            <div className="col-4">
-                <select defaultValue={sort} onChange={(e) => { setSort(e.target.value) }} className="form-select" aria-label="Default select example">
-                    <option value="ASC">Sort by Total Price: Ascending</option>
-                    <option value="DESC">Sort by Total Price: Descending</option>
-                </select>
-            </div>
-            <div className="col-4">
-                <select defaultValue={status} onChange={(e) => { setStatus(e.target.value) }} className="form-select" aria-label="Default select example">
-                            <option value="">Category: All</option>
-                            <option value="submitted">Category: submitted</option>
-                            <option value="completed">Category: completed</option>
-                </select>
+            <div class="row">
+                <h1>Orders</h1>
+
+                <div className="login">
+                    <input value={address} onChange={(e) => setAddress(e.target.value)} name="address" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                </div>
+                <div className="filter3">
+                    <select defaultValue={sort} onChange={(e) => { setSort(e.target.value) }} className="form-select" aria-label="Default select example">
+                        <option value="ASC">Sort by Price: Asc</option>
+                        <option value="DESC">Sort by Price: Desc</option>
+                    </select>
+                </div>
+                <div className="filter3">
+                    <select defaultValue={status} onChange={(e) => { setStatus(e.target.value) }} className="form-select" aria-label="Default select example">
+                                <option value="">Category: All</option>
+                                <option value="submitted">Category: submitted</option>
+                                <option value="completed">Category: completed</option>
+                    </select>
+                </div>
             </div>
 
+            <br></br>
+            
             <table className="table table-active table-striped">
 
                 <thead class = "table-primary">
@@ -128,7 +135,7 @@ const AllOrders = () => {
             {
                 totalPages > 0 ? (
                     <div className="row justify-content-between">
-                        <div className='col-3'>
+                        <div className='filter2'>
                             <Form.Select defaultValue={size} onChange={(e) => setSize(e.target.value)}>
                                 <option value={3}>Page size: 3</option>
                                 <option value={10}>Page size: 10</option>
