@@ -79,7 +79,7 @@ const Login = () => {
                     </label>
                     <button className="login" onClick={handleLogin}>Login</button>
                 
-                <Link to="/">Do not have an account?Sign up here</Link>
+                <Link to="/">Do not have an account? <br/>Sign up here</Link>
                 </form>
             </div>
         </div>
