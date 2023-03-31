@@ -15,11 +15,12 @@ function MyOrders() {
 
       const [orders,setOrders] = useState([])
       const [error, setError] = React.useState(null)
+      const [status, setStatus] = React.useState('')
 
       useEffect ( () =>{
       let str = window.localStorage.getItem('token').replace(/["]/g,' ');
      
-         fetch(` http://localhost:8080/eshop/orders/user`, {
+         fetch(` http://localhost:8080/eshop/orders/user?` +(status ? `status=${status}` : ''), {
           headers: {
               "Authorization": 'Bearer'+str,
               'Accept': 'application/json',
@@ -36,14 +37,20 @@ function MyOrders() {
         .catch(err => setError(err))
         
           
-  }, [orders])
+  }, [orders,status])
 
 
   return (
     <>
       <Navbar/>
       <h1>My Orders</h1>
-
+      <div className="col-4">
+                <select defaultValue={status} onChange={(e) => { setStatus(e.target.value) }} className="form-select" aria-label="Default select example">
+                            <option value="">Category: All</option>
+                            <option value="submitted">Category: submitted</option>
+                            <option value="completed">Category: completed</option>
+                </select>
+            </div>
       <table class="table table-active table-striped">
 
                 <thead class = "table-primary">

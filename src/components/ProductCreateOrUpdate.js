@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from './Navbar'
+import Popup from 'reactjs-popup';
+
 
 const ProductCreateOrUpdate = () => {
 

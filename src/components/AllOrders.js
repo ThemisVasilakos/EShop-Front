@@ -9,6 +9,7 @@ const AllOrders = () => {
 
     const [error, setError] = React.useState(null)
     const [orders, setOrders] = React.useState([])
+    const [status, setStatus] = React.useState('')
 
     const [address, setAddress] = React.useState('')
     const [page, setPage] = React.useState(0)
@@ -32,7 +33,7 @@ const AllOrders = () => {
         useEffect ( () =>{
         let str = window.localStorage.getItem('token').replace(/["]/g,' ');
        
-           fetch(`http://localhost:8080/eshop/orders?page=${page}&size=${size}&sort=${sort}` + (address ? `&address=${address}` : ''), {
+           fetch(`http://localhost:8080/eshop/orders?page=${page}&size=${size}&sort=${sort}` + (address ? `&address=${address}` : '')+ (status ? `&status=${status}` : ''), {
             headers: {
                 "Authorization": 'Bearer'+str,
                 'Accept': 'application/json',
@@ -60,7 +61,7 @@ const AllOrders = () => {
           }
           
             
-    }, [address, page, size, sort, refresh])
+    }, [address, status,page, size, sort, refresh])
 
     
 
@@ -77,6 +78,13 @@ const AllOrders = () => {
                 <select defaultValue={sort} onChange={(e) => { setSort(e.target.value) }} className="form-select" aria-label="Default select example">
                     <option value="ASC">Sort by Total Price: Ascending</option>
                     <option value="DESC">Sort by Total Price: Descending</option>
+                </select>
+            </div>
+            <div className="col-4">
+                <select defaultValue={status} onChange={(e) => { setStatus(e.target.value) }} className="form-select" aria-label="Default select example">
+                            <option value="">Category: All</option>
+                            <option value="submitted">Category: submitted</option>
+                            <option value="completed">Category: completed</option>
                 </select>
             </div>
 
