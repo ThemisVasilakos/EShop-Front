@@ -71,11 +71,14 @@ const Products = () => {
             <Navbar/>
 
             <br></br>
+
             <div class="row">
                 <h1>Order {ordersId} Products</h1>
                 {validateOrder()}
             </div>
+
             <br></br>
+
             <table className="table table-active table-striped">
 
                 <thead class = "table-primary">

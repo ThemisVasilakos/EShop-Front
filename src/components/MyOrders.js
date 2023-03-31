@@ -46,7 +46,7 @@ function MyOrders() {
       
       <br></br>
 
-        <div class="row">
+        <div className="row">
             <h1>My Orders</h1>
             <div className="filter3">
                     <select defaultValue={status} onChange={(e) => { setStatus(e.target.value) }} className="form-select" aria-label="Default select example">

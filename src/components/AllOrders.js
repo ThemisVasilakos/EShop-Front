@@ -73,7 +73,7 @@ const AllOrders = () => {
             <br></br>
 
             <div class="row">
-                <h1>Orders</h1>
+                <h1>All Orders</h1>
 
                 <div className="login">
                     <input value={address} onChange={(e) => setAddress(e.target.value)} name="address" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
