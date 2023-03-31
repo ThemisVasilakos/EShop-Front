@@ -66,7 +66,9 @@ const Login = () => {
 
     return (
         <div>
-            <div style={{paddingTop:"20%"}}>
+            <h1 style={{textAlign: 'center', alignSelf: 'center' }}> Welcome to our E-Shop </h1>
+
+            <div style={{paddingTop:"5%"}}>
                 <form className='loginForm'>
                 <h1>Login</h1>
                     <label>Enter username:
