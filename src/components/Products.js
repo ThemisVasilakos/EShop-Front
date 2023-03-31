@@ -11,6 +11,7 @@ const Products = () => {
     const [products, setProducts] = React.useState([])
 
     const [productDescription, setProductDescription] = React.useState('')
+    const [category, setCategory] = React.useState('')
     const [page, setPage] = React.useState(0)
     const [size, setSize] = React.useState(3)
     const [sort, setSort] = React.useState("ASC")
@@ -34,7 +35,7 @@ const Products = () => {
         useEffect ( () =>{
         let str = window.localStorage.getItem('token').replace(/["]/g,' ');
        
-           fetch(` http://localhost:8080/eshop/products/all?page=${page}&size=${size}&sort=${sort}` + (productDescription ? `&productDescription=${productDescription}` : ''), {
+           fetch(` http://localhost:8080/eshop/products/all?page=${page}&size=${size}&sort=${sort}` + (productDescription ? `&productDescription=${productDescription}` : '') + (category ? `&category=${category}` : ''), {
             headers: {
                 "Authorization": 'Bearer'+str,
                 'Accept': 'application/json',
@@ -56,7 +57,7 @@ const Products = () => {
           })
           .catch(err => setError(err))
             
-    }, [productDescription, page, size, sort, refresh])
+    }, [productDescription, category,page, size, sort, refresh])
 
     const delProd = async(e) =>{
         let str = window.localStorage.getItem('token').replace(/["]/g,' ')
@@ -110,6 +111,20 @@ const Products = () => {
                     <option value="DESC">Sort by Price: Descending</option>
                 </select>
             </div>
+            <div className="col-4">
+                <select defaultValue={category} onChange={(e) => { setCategory(e.target.value) }} className="form-select" aria-label="Default select example">
+                            <option value="">Category: All</option>
+                            <option value="smartphones">Category: smartphones</option>
+                            <option value="laptops">Category: laptops</option>
+                            <option value="tablets">Category: tablets</option>
+                            <option value="pc hardware">Category: pc hardware</option>
+                            <option value="monitors">Category: monitors</option>
+                            <option value="peripherals">Category: peripherals</option>
+                            <option value="cables">Category: cables</option>
+                            <option value="gaming">Category: gaming</option>
+                </select>
+            </div>
+
 
             <table className="table table-active table-striped">
 

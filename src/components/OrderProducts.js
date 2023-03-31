@@ -61,7 +61,7 @@ const Products = () => {
 
         const validateOrder = (e) => {
             if(window.localStorage.getItem('role')==1){
-                return <button onClick={() => complete()} className="btn btn-dark">Complete</button>
+                return <button onClick={() => complete()} className="btn btn-dark">Complete Order</button>
             }
     
         }
